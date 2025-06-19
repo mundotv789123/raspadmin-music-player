@@ -1,3 +1,54 @@
-<h1 class="text-3xl font-bold underline">
-  Hello world!
-</h1>
+<div class="fixed bottom-0 left-0 right-0 flex flex-col z-20 text-white">
+  <div
+    class="grid grid-cols-[calc(100%_-2rem)_2rem] bg-black bg-opacity-45 border-2 border-zinc-400 bg-gradient-to-r from-zinc-500/25 to-zinc-900/25 ps-4 backdrop-blur-sm animate-transform-from-bottom">
+    <div class="w-full flex flex-col flex-grow">
+      <div class="w-full flex flex-col md:flex-row my-2 md:my-4">
+        <div
+          class="w-full md:w-1/3 md:grid-cols-[3rem_calc(100%_-_3rem)] grid grid-cols-[3.5rem_calc(100%_-_3rem)]  gap-2 items-center mb-3 md:mb-0">
+          <div
+            class="flex flex-col justify-center items-center w-14 h-14 md:w-12 md:h-12 overflow-hidden rounded-md">
+            <img src="/img/icons/music.svg" [alt]="''" class="h-full w-full top-0
+              left-0 object-cover" width={512} height={512}
+              unoptimized />
+          </div>
+          <div class="overflow-hidden md:text-left text-center">
+            <h1 class="font-bold overflow-hidden text-nowrap text-ellipsis">
+              nome música
+            </h1>
+          </div>
+        </div>
+        <div class="w-full flex md:w-2/3 md:justify-center">
+          <div class="md:w-1/2 flex justify-center gap-3 me-auto md:me-0">
+            <button class="text-2xl w-8" >
+              <fa-icon [icon]="faBackwardFast" />
+            </button>
+            <button class="text-3xl w-8 h-12"  disabled={audioProps.loading}>
+              <fa-icon [icon]="faPause" />
+            </button>
+            <button class="text-2xl w-8" >
+              <fa-icon [icon]="faForwardFast" />
+            </button>
+          </div>
+          <div class="md:w-1/2 flex gap-2 justify-end">
+            <button class="text-2xl flex flex-col justify-center" >
+              <fa-icon [icon]="faShuffle" />
+            </button>
+            <div class="flex items-center gap-2">
+              <button class="text-2xl w-7" >
+                <fa-icon [icon]="faVolumeHigh" />
+              </button>
+              <!-- <Range class="sm:block w-20 hidden" percent=audioControls.volume * 100/> -->
+            </div>
+            <button class="text-2xl w-9">
+              <fa-icon [icon]="faEyeSlash" />
+            </button>
+            <button class="text-2xl">
+              <fa-icon [icon]="faBars" />
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- <Range class="w-full my-2"/> -->
+    </div>
+  </div>
+</div>
