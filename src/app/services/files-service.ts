@@ -14,7 +14,7 @@ export class FilesService {
 
   async getFiles(path: string): Promise<Array<FileDTO>> {
     const endpoint = environment.apiQuery.replace('{0}', encodeURIComponent(path).replace("%2F", "/"));
-    const response = await lastValueFrom(this.client.get<FilesResponse>(`/files${endpoint}`));
+    const response = await lastValueFrom(this.client.get<FilesResponse>(`${environment.baseUri}/files${endpoint}`));
 
     const url = `${environment.baseUri}/files/open${environment.srcQuery}`;
     

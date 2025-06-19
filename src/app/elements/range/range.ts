@@ -1,10 +1,9 @@
-import { Component, ElementRef, Input, input, OnInit, output, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, input, output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-range',
   imports: [],
-  templateUrl: './range.html',
-  styleUrl: './range.css'
+  templateUrl: './range.html'
 })
 export class Range {
   @ViewChild('inputRef') inputRef!: ElementRef<HTMLInputElement>;

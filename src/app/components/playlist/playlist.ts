@@ -6,8 +6,7 @@ import { FileDTO } from '../../services/models/files-model';
 @Component({
   selector: 'app-playlist',
   imports: [FontAwesomeModule],
-  templateUrl: './playlist.html',
-  styleUrl: './playlist.css'
+  templateUrl: './playlist.html'
 })
 export class PlaylistComponent {
   faVolumeHigh=faVolumeHigh

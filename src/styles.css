@@ -3,4 +3,40 @@
 html,
 body {
   height: 100vh;
+  color: white;
+}
+
+@theme {
+  --animate-modal-down: modal-down 0.8s normal;
+  --animate-loading: loading 1s ease infinite;
+
+  @keyframes modal-down {
+    0% {
+      opacity: 0;
+      transform: translateY(-500px);
+    }
+    90% {
+      opacity: 1;
+      transform: translateY(5px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes loading {
+    0% {
+      margin-left: 0;
+      width: 0;
+    }
+    50% {
+      margin-left: 0;
+      width: 100%;
+    }
+    100% {
+      margin-left: 100%;
+      width: 0;
+    }
+  }
 }
