@@ -17,10 +17,10 @@ export class Range {
 
   customClass = input<string>()
 
-  change = output<Event>()
+  changepercent = output<number>()
 
-  handlerChange(event: Event) {
+  handlerChange() {
     this.percentValue = Number(this.inputRef.nativeElement.value ?? '0');
-    this.change.emit(event);
+    this.changepercent.emit(this.percentValue);
   }
 }

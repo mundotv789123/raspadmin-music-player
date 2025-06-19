@@ -1,11 +1,12 @@
 @if(isLoading()) {
 <div class="bg-white h-1 animate-loading mb-4"></div>
-} @else {
-@if(loginForm()) {
+} @else if(errorMessage()) {
+<h1 class="text-2xl text-center">{{errorMessage()}}</h1>
+} @else if(loginForm()) {
 <app-login />
 } @else {
 <div class="fixed bottom-0 left-0 right-0 top-0 flex flex-col h-screen">
-  <app-playlist [playlist]="playlist" [playing]="file" (click)="playAudio($event)" class="flex flex-grow justify-end overflow-hidden"/>
+  <app-playlist [playlist]="playlist" [playing]="file()" (clickmusic)="playAudio($event)" class="flex flex-grow justify-end overflow-hidden"/>
   <div
     class="grid grid-cols-[calc(100%_-2rem)_2rem] bg-black bg-opacity-45 border-2 border-zinc-400 bg-gradient-to-r from-zinc-500/25 to-zinc-900/25 ps-4 animate-transform-from-bottom">
     <div class="w-full flex flex-col flex-grow">
@@ -18,35 +19,35 @@
           </div>
           <div class="overflow-hidden md:text-left text-center">
             <h1 class="font-bold overflow-hidden text-nowrap text-ellipsis">
-              nome música
+              {{file()?.name ?? '---'}}
             </h1>
           </div>
         </div>
         <div class="w-full flex md:w-2/3 md:justify-center">
           <div class="md:w-1/2 flex justify-center gap-3 me-auto md:me-0">
-            <button class="text-2xl w-8">
-              <fa-icon [icon]="faBackwardFast" />
+            <button class="text-2xl w-8" (click)="backSong()">
+              <fa-icon [icon]="faBackwardFast"/>
             </button>
-            <button class="text-3xl w-8 h-12" disabled={audioProps.loading}>
-              <fa-icon [icon]="faPause" />
+            <button class="text-3xl w-8 h-12" [disabled]="audioIsLoading()" (click)="togglePlayAudio()">
+              <fa-icon [icon]="audioPaused() ? faPlay : faPause" />
             </button>
-            <button class="text-2xl w-8">
+            <button class="text-2xl w-8" (click)="nextSong()">
               <fa-icon [icon]="faForwardFast" />
             </button>
           </div>
           <div class="md:w-1/2 flex gap-2 justify-end">
-            <button class="text-2xl flex flex-col justify-center">
+            <!-- <button class="text-2xl flex flex-col justify-center">
               <fa-icon [icon]="faShuffle" />
-            </button>
+            </button> -->
             <div class="flex items-center gap-2">
               <button class="text-2xl w-7">
                 <fa-icon [icon]="faVolumeHigh" />
               </button>
-              <app-range class="sm:block w-20 hidden" [percent]="controls.volume * 100" />
+              <app-range class="sm:block w-20 hidden" [percent]="0.5" (changepercent)="handlerAudioVolumeChange($event)" />
             </div>
-            <button class="text-2xl w-9">
+            <!-- <button class="text-2xl w-9">
               <fa-icon [icon]="faEyeSlash" />
-            </button>
+            </button> -->
           </div>
         </div>
       </div>
@@ -54,5 +55,16 @@
     </div>
   </div>
 </div>
-}
+<audio
+  #audioRef
+  autoPlay
+  [src]="file()?.src"
+  class="hidden"
+  controls="false"
+  (canplay)="handlerAudioLoaded()"
+  (timeupdate)="handlerAudioTimeUpdate()"
+  (ended)="nextSong()"
+  (error)="handlerError()"
+  [volume]="0.5"
+></audio>
 }

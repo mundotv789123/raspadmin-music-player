@@ -1,6 +1,6 @@
 import { Component, input, output } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faClose, faVolumeHigh } from '@fortawesome/free-solid-svg-icons';
+import { faVolumeHigh } from '@fortawesome/free-solid-svg-icons';
 import { FileDTO } from '../../services/models/files-model';
 
 @Component({
@@ -14,14 +14,10 @@ export class PlaylistComponent {
   playing = input<FileDTO | null>();
   playlist = input<Array<FileDTO>>();
 
-  click = output<FileDTO>()
-
-  handlerClose() {
-    
-  }
+  clickmusic = output<FileDTO>()
 
   handlerClick(file: FileDTO) {
-    this.click.emit(file);
+    this.clickmusic.emit(file);
   }
 
   preventDefault(e: MouseEvent) {
