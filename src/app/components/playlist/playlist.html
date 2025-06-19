@@ -1,27 +1,25 @@
-<div class="flex flex-grow justify-end overflow-hidden bg-zinc-700 bg-opacity-30 h-full">
-  <div class="flex-grow" (click)="handlerClose()"></div>
-  <div class="flex flex-col w-full max-w-xl bg-black bg-opacity-35 animate-transform-from-end">
-    <div class="bg-black bg-opacity-30 text-center flex py-1">
-      <p class="w-full text-lg">Playlist de músicas</p>
-    </div>
-    <div class="flex flex-col p-2 overflow-y-auto gap-2">
-      @for(file of playlist(); track file.src) {
-      <div (click)="handlerClick(file)"
-        class="grid grid-cols-[2.5rem_calc(100%_-_2.5rem)] cursor-pointer hover:underline gap-2">
-        <div class="flex flex-col justify-center items-center w-10 h-10 overflow-hidden rounded-md">
-          <img [src]="file.icon ?? ''" [alt]="file.name" class="h-full w-full top-0 left-0 object-cover" width="512"
-            height="512" />
-        </div>
-        <div class="flex gap-2 items-center">
-          <a [href]="file.href" (click)="preventDefault($event)" class="overflow-hidden text-nowrap text-ellipsis">
-            {{file.name}}
-          </a>
-          @if(file.src == playing()?.src) {
-          <fa-icon [icon]="faVolumeHigh" class="ms-auto me-2" />
-          }
-        </div>
+<div class="flex-grow" (click)="handlerClose()"></div>
+<div class="flex flex-col w-full max-w-xl bg-black bg-opacity-35 animate-transform-from-end">
+  <div class="bg-black bg-opacity-30 text-center flex py-1">
+    <p class="w-full text-lg">Playlist de músicas</p>
+  </div>
+  <div class="flex flex-col p-2 overflow-y-auto gap-2">
+    @for(file of playlist(); track file.src) {
+    <div (click)="handlerClick(file)"
+      class="grid grid-cols-[2.5rem_calc(100%_-_2.5rem)] cursor-pointer hover:underline gap-2">
+      <div class="flex flex-col justify-center items-center w-10 h-10 overflow-hidden rounded-md">
+        <img [src]="file.icon ?? ''" [alt]="file.name" class="h-full w-full top-0 left-0 object-cover" width="512"
+          height="512" />
       </div>
-      }
+      <div class="flex gap-2 items-center">
+        <a [href]="file.href" (click)="preventDefault($event)" class="overflow-hidden text-nowrap text-ellipsis">
+          {{file.name}}
+        </a>
+        @if(file.src == playing()?.src) {
+        <fa-icon [icon]="faVolumeHigh" class="ms-auto me-2" />
+        }
+      </div>
     </div>
+    }
   </div>
 </div>

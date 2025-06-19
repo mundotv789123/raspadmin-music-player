@@ -18,16 +18,9 @@ export class Range {
   customClass = input<string>()
 
   change = output<Event>()
-  mousemove = output<Event>()
-  mouseenter = output<Event>()
-  mouseleave = output<Event>()
 
   handlerChange(event: Event) {
     this.percentValue = Number(this.inputRef.nativeElement.value ?? '0');
     this.change.emit(event);
   }
-
-  handlerMouseMove = this.mousemove.emit
-  handlerMouseEnter = this.mouseenter.emit
-  handlerMouseLeave  = this.mouseleave.emit
 }

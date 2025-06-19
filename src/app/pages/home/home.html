@@ -1,11 +1,11 @@
 @if(isLoading()) {
-<h1>Loading...</h1>
+<div class="bg-white h-1 animate-loading mb-4"></div>
 } @else {
 @if(loginForm()) {
 <app-login />
 } @else {
-<div class="fixed bottom-0 left-0 right-0 top-0 flex flex-col z-20">
-  <app-playlist [playlist]="playlist" [playing]="file" (click)="playAudio($event)" class="h-full" />
+<div class="fixed bottom-0 left-0 right-0 top-0 flex flex-col h-screen">
+  <app-playlist [playlist]="playlist" [playing]="file" (click)="playAudio($event)" class="flex flex-grow justify-end overflow-hidden"/>
   <div
     class="grid grid-cols-[calc(100%_-2rem)_2rem] bg-black bg-opacity-45 border-2 border-zinc-400 bg-gradient-to-r from-zinc-500/25 to-zinc-900/25 ps-4 animate-transform-from-bottom">
     <div class="w-full flex flex-col flex-grow">

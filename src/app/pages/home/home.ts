@@ -42,14 +42,22 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.filesServie.getFiles("").then(files => {
+    this.filesServie.getFiles(location.hash.substring(1)).then(files => {
       console.log('files', files);
+      this.playlist = files.filter(file => file.type && this.isAudio(file.type));
     }).catch(error => {
+      console.error(error);
       if (error.status == 401) {
         this.loginForm.set(true);
+      } else {
+        //TODO erro
       }
     }).finally(() => {
       this.isLoading.set(false);
     })
+  }
+
+  isAudio(type: string) {
+    return type.match(/audio\/(mpeg|mp3|ogg|(x-(pn-)?)?wav)/);
   }
 }

@@ -7,6 +7,8 @@ body {
 }
 
 @theme {
+  --color-background: var(--background);
+
   --animate-modal-down: modal-down 0.8s normal;
   --animate-loading: loading 1s ease infinite;
 
@@ -38,5 +40,11 @@ body {
       margin-left: 100%;
       width: 0;
     }
+  }
+}
+
+@layer base {
+  :root {
+    --background: #333;
   }
 }
