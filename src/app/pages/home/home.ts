@@ -1,6 +1,17 @@
 import { Component, ElementRef, OnInit, signal, ViewChild } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faBackwardFast, faBars, faEyeSlash, faForwardFast, faPause, faPlay, faShuffle, faVolumeHigh, faVolumeMute, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { 
+  faBackward, 
+  faBars, 
+  faEyeSlash, 
+  faForward, 
+  faPause, 
+  faPlay, 
+  faShuffle, 
+  faVolumeHigh, 
+  faVolumeMute, 
+  faXmark 
+} from '@fortawesome/free-solid-svg-icons';
 import { PlaylistComponent } from "../../components/playlist/playlist";
 import { FileDTO } from '../../services/models/files-model';
 import { Range } from "../../elements/range/range";
@@ -14,10 +25,10 @@ import { Login } from "../../components/login/login";
 })
 export class HomeComponent implements OnInit {
   faVolumeMute = faVolumeMute
-  faBackwardFast = faBackwardFast
+  faBackward = faBackward
+  faForward = faForward
   faPause = faPause
   faPlay=faPlay
-  faForwardFast = faForwardFast
   faShuffle = faShuffle
   faVolumeHigh = faVolumeHigh
   faEyeSlash = faEyeSlash

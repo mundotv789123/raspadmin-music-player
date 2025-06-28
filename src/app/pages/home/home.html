@@ -8,7 +8,7 @@
 <div class="fixed bottom-0 left-0 right-0 top-0 flex flex-col h-screen">
   <app-playlist [playlist]="playlist" [playing]="file()" (clickmusic)="playAudio($event)" class="flex flex-grow justify-end overflow-hidden"/>
   <div
-    class="grid grid-cols-[calc(100%_-2rem)_2rem] bg-black bg-opacity-45 border-2 border-zinc-400 bg-gradient-to-r from-zinc-500/25 to-zinc-900/25 ps-4 animate-transform-from-bottom">
+    class="grid grid-cols-[calc(100%_-2rem)_2rem] bg-black border-t-1 border-zinc-600 bg-gradient-to-r from-zinc-500/25 to-zinc-900/25 ps-4 animate-transform-from-bottom">
     <div class="w-full flex flex-col flex-grow">
       <div class="w-full flex flex-col md:flex-row my-2 md:my-4">
         <div
@@ -26,28 +26,22 @@
         <div class="w-full flex md:w-2/3 md:justify-center">
           <div class="md:w-1/2 flex justify-center gap-3 me-auto md:me-0">
             <button class="text-2xl w-8" (click)="backSong()">
-              <fa-icon [icon]="faBackwardFast"/>
+              <fa-icon [icon]="faBackward" class="hover:text-stone-400"/>
             </button>
             <button class="text-3xl w-8 h-12" [disabled]="audioIsLoading()" (click)="togglePlayAudio()">
-              <fa-icon [icon]="audioPaused() ? faPlay : faPause" />
+              <fa-icon [icon]="audioPaused() ? faPlay : faPause" class="hover:text-stone-400"/>
             </button>
             <button class="text-2xl w-8" (click)="nextSong()">
-              <fa-icon [icon]="faForwardFast" />
+              <fa-icon [icon]="faForward" class="hover:text-stone-400"/>
             </button>
           </div>
           <div class="md:w-1/2 flex gap-2 justify-end">
-            <!-- <button class="text-2xl flex flex-col justify-center">
-              <fa-icon [icon]="faShuffle" />
-            </button> -->
             <div class="flex items-center gap-2">
               <button class="text-2xl w-7">
                 <fa-icon [icon]="faVolumeHigh" />
               </button>
               <app-range class="sm:block w-20 hidden" [percent]="0.5" (changepercent)="handlerAudioVolumeChange($event)" />
             </div>
-            <!-- <button class="text-2xl w-9">
-              <fa-icon [icon]="faEyeSlash" />
-            </button> -->
           </div>
         </div>
       </div>
